@@ -1,0 +1,14 @@
+server:
+  error:
+    include-message: always
+  port: 8082
+
+app:
+  api:
+    termsOfServiceUrl: "#"
+    apiDescription: "none"
+    supportEmail: "wolniarskim@gmail.com"
+    licenseName: "#"
+    licenseUrl: "#"
+    contactName: "Mateusz"
+    version: 1.0
