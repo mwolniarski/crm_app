@@ -2,34 +2,37 @@ package pl.wolniarskim.crm_app.controller;
 
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
+import pl.wolniarskim.crm_app.model.dto.read.ClientReadModel;
 import pl.wolniarskim.crm_app.model.dto.read.LeadReadModel;
+import pl.wolniarskim.crm_app.model.dto.write.ClientWriteModel;
 import pl.wolniarskim.crm_app.model.dto.write.LeadWriteModel;
+import pl.wolniarskim.crm_app.service.ClientService;
 import pl.wolniarskim.crm_app.service.LeadService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/leads")
-public class LeadController {
+@RequestMapping(path = "/api/clients")
+public class ClientController {
 
-    LeadService service;
+    ClientService service;
 
-    public LeadController(LeadService service){
+    public ClientController(ClientService service){
         this.service = service;
     }
 
     @GetMapping("/findById/{id}")
-    public LeadReadModel findById(@PathVariable("id") long id){
+    public ClientReadModel findById(@PathVariable("id") long id){
         return service.getById(id);
     }
 
     @PostMapping("/create")
-    public LeadReadModel create(@RequestBody LeadWriteModel writeModel){
+    public ClientReadModel create(@RequestBody ClientWriteModel writeModel){
         return service.create(writeModel);
     }
 
     @GetMapping("/findAll")
-    public List<LeadReadModel> findAll(){
+    public List<ClientReadModel> findAll(){
         return service.getAll();
     }
 
@@ -39,7 +42,7 @@ public class LeadController {
     }
 
     @PutMapping("/update")
-    public LeadReadModel update(@Param("id") long id, @RequestBody LeadWriteModel writeModel){
+    public ClientReadModel update(@Param("id") long id, @RequestBody ClientWriteModel writeModel){
         return service.update(writeModel,id);
     }
 }
